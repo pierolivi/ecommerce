@@ -8,12 +8,13 @@ public function InserComment($tabToInsert)
 {
 	
 	$sql="INSERT INTO commentaire(auteur,contenu,note,datecomment,produit_id) 
-	VALUES (?,?,?,NOW(),?)";
+	VALUES (?,?,?,?,?)";
 	$requete=$this->db->query($sql,
 					[
 						$tabToInsert['auteur'],
 						$tabToInsert['contenu'],
 						$tabToInsert['note'],
+						$tabToInsert['datecomment'],
 						$tabToInsert['produit_id'],
 					]);
 	//ou

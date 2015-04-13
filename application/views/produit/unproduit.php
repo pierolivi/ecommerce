@@ -48,6 +48,8 @@
                 <?=form_error("auteur","<div class='form-control'>","</div>");?>
                 <?=form_error("note","<div class='form-control'>","</div>");?>
                 <?=form_error("descrip","<div class='form-control'>","</div>");?>
+                <?=$this->session->flashdata("success_comment");?>
+
                 <div class="well">
 
                     <div class="text-right">
@@ -61,13 +63,20 @@
                         <?php foreach($commentaire as $cle=>$value):?>
                         <p><?= $value->auteur?></p>
                         <p><?= $value->contenu?></p>
+                        <p><?= $value->datecomment?></p>
                         <div class="col-md-12">
                             <?php $note=$value->note?>
                             <?php for($i=1;$i<=$note;$i++)
                             {
                             echo "<span class='glyphicon glyphicon-star'></span>";
-                            
-                            <!--<span class="glyphicon glyphicon-star-empty"></span>-->
+                            }?>
+                            <?php if ($note == 0){
+
+                            echo'<span class="glyphicon glyphicon-star-empty"></span>';
+                            echo'<span class="glyphicon glyphicon-star-empty"></span>';
+                            echo'<span class="glyphicon glyphicon-star-empty"></span>';
+                            echo'<span class="glyphicon glyphicon-star-empty"></span>';
+                            echo'<span class="glyphicon glyphicon-star-empty"></span>';
                             }?>
                             <br>
                             <span class="pull-right">10 days ago</span>
