@@ -57,11 +57,12 @@ class Produit extends CI_Controller
 
 		
     $comments=$this->Comment_model->AfficherComment($idProduit);
-		
+	$average=$this->Produit_model->Average($idProduit);	
 
 		$this->load->view("produit/unproduit",
 			["produitid"=>$unproduit,
-			"commentaire"=>$comments
+			"commentaire"=>$comments,
+			"media"=>$average
 			]);
 	
 	}

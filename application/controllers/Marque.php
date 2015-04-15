@@ -30,7 +30,9 @@ public function info ($idinfo)
 	$this->load->model("Marque_model");
 	$mesproduits=$this->Marque_model->
 	MesProduits($idinfo);
-	//var_dump($mesproduits);
+
+	
+	//var_dump($mesproduit);
 
 	$this->load->view("marque/mesprod",
 		["mesprod"=>$mesproduits]);

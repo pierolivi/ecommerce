@@ -12,11 +12,18 @@ class Main extends CI_Controller {
 		$this->load->model("Produit_model");
 		
 		$produits=$this->Produit_model->findLimit(5);
+		$Slides=$this->Produit_model->FindBestSlide(4);
 		//$this->Produit->findLimit();
 		$this->load->helper("text");  //character_limiter
-		$this->load->view("accueil",	//je vais dans views/accueil.php
-			["cinqproduits"=>$produits]);
+		
 
+		
+
+
+		$this->load->view("accueil",	//je vais dans views/accueil.php
+			["cinqproduits"=>$produits,
+			"slide"=>$Slides
+			]);
 
 	}
 }

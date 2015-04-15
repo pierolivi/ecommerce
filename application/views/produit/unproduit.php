@@ -20,13 +20,29 @@
                     </div>
                     <div class="ratings">
                         <p class="pull-right">3 reviews</p>
+                        <!--<?php var_dump($media->Moyenne)?>-->
+                        
                         <p>
+                           <?php for($i=0;$i<5;$i++)
+                            {
+                                if($i < $media->Moyenne)
+                                    {
+
+                                echo "<span class='glyphicon glyphicon-star'></span>";
+                                    }
+                            
+                                else{
+
+                                echo'<span class="glyphicon glyphicon-star-empty"></span>';
+                                    }
+                           }?>
+                            <!--<span class="glyphicon glyphicon-star"></span>
                             <span class="glyphicon glyphicon-star"></span>
                             <span class="glyphicon glyphicon-star"></span>
                             <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star-empty"></span>
-                            4.0 stars
+                            <span class="glyphicon glyphicon-star-empty"></span>-->
+                            <?= $media->Moyenne?>
+                        
                         </p>
                     </div>
                 </div>
@@ -39,7 +55,7 @@
                     <input class="form-control" type="number" name="note" placeholder="Votre note" value="<?=set_value('note');?>">
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control" type="text" name="descrip"  value="<?=set_value('descrip');?>"></textarea>
+                    <textarea class="form-control" type="text" name="descrip" placeholder="Commentaire" value="<?=set_value('descrip');?>"></textarea>
                 </div>
 
                 <?= form_submit('envoi','valider');?>
@@ -48,6 +64,7 @@
                 <?=form_error("auteur","<div class='form-control'>","</div>");?>
                 <?=form_error("note","<div class='form-control'>","</div>");?>
                 <?=form_error("descrip","<div class='form-control'>","</div>");?>
+                
                 <?=$this->session->flashdata("success_comment");?>
 
                 <div class="well">
@@ -60,29 +77,65 @@
 
                     <div class="row">
                         <!--<?php var_dump($commentaire)?>-->
+                        <p><?= count($commentaire)." commentaires"?></p>
+                        <?php $noteT=0;?>
+                        
                         <?php foreach($commentaire as $cle=>$value):?>
+
                         <p><?= $value->auteur?></p>
                         <p><?= $value->contenu?></p>
                         <p><?= $value->datecomment?></p>
                         <div class="col-md-12">
                             <?php $note=$value->note?>
-                            <?php for($i=1;$i<=$note;$i++)
+                            <?php for($i=0;$i<5;$i++)
                             {
-                            echo "<span class='glyphicon glyphicon-star'></span>";
-                            }?>
-                            <?php if ($note == 0){
+                                if($i <$note)
+                                    {
 
-                            echo'<span class="glyphicon glyphicon-star-empty"></span>';
-                            echo'<span class="glyphicon glyphicon-star-empty"></span>';
-                            echo'<span class="glyphicon glyphicon-star-empty"></span>';
-                            echo'<span class="glyphicon glyphicon-star-empty"></span>';
-                            echo'<span class="glyphicon glyphicon-star-empty"></span>';
-                            }?>
+                                echo "<span class='glyphicon glyphicon-star'></span>";
+                                    }
+                            
+                                else{
+
+                                echo'<span class="glyphicon glyphicon-star-empty"></span>';
+                                    }
+                           }?>
                             <br>
                             <span class="pull-right">10 days ago</span>
+
+                            <?php $noteT=$noteT+$note;?>
                             
+
                         </div>
                         <?php endforeach;?>
+
+                        
+
+                    <?php if(count($commentaire)!= 0){
+
+                    $Moyenne=$noteT/count($commentaire);
+
+                    echo "Moyenne note ".$Moyenne."<br>";
+
+                        for($i=0;$i<5;$i++)
+                            {
+                                if($i < $Moyenne)
+                                    {
+
+                                echo "<span class='glyphicon glyphicon-star'></span>";
+                                    }
+                            
+                                else{
+
+                                echo'<span class="glyphicon glyphicon-star-empty"></span>';
+                                    }
+                            }
+                        }
+                        else{ 
+                            echo "Moyenne note 0";
+
+                        }?>
+                        
                     </div>
 
                     <hr>
