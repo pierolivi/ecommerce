@@ -45,6 +45,19 @@
                         
                         </p>
                     </div>
+
+                        <?= form_open("Panier/ajout");?>
+                        <div class="form-group">
+                        <input class="form-control" type="number" name="Nb" placeholder="quantite" value="">
+                    </div>
+                        <div class="form-group">
+                        <input class="form-control" type="hidden" name="idprod" placeholder="" value="<?=$produitid->id;?>">
+                    </div>
+
+                        <?= form_submit('ajout','ajouter');?>
+                    <?=form_close();?>
+                    <!--<?php var_dump($_POST)?>-->
+                
                 </div>
                 <?= form_open("Produit/information/".$produitid->id);?>
                 <div class="form-group">

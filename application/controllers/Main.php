@@ -4,6 +4,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Main extends CI_Controller {
 	public function index()
 	{
+		//test
+		//set_cookie("test","ceci est un test",10);
+		//set_cookie("test","ceci est un test",time()+172800);//J+seconde
+		//var_dump(get_cookie("test"));
+
 		//$this->load->helper('url'); charge uniquement 
 		//pour cette methode
 		//$prenom="pierre";

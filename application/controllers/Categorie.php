@@ -15,10 +15,11 @@ class Categorie extends CI_Controller {
 
 
 		$this->load->model("Categorie_model");
-		$Prod=$this->Categorie_model->information($id);
+		$Prod=$this->Categorie_model->getProduitByCat($id);
 
 		$this->load->view("Categorie/CatProd",
-			["prod"=>$Prod]);
+			["catprod"=>$Prod]);
+			
 
 	}
 

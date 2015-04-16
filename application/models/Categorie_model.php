@@ -17,21 +17,19 @@ public function getCategorie()
 
 }
 
-public function information ($idProduit) //parametre de information/1
+	public function getProduitByCat ($idProduit) //parametre de information/1
 	{
 
-		$sql="SELECT produit_categorie.* FROM produit_categorie 
+		$sql="SELECT produit_categorie.idprod,titre,
+		produit.description,image,prix FROM produit_categorie 
 		INNER JOIN categorie ON idcat=idcategorie
+		INNER JOIN produit ON id=idprod
 		WHERE idcategorie= ?";
 		$requete2=$this->db->query($sql,[$idProduit]);
-		var_dump($requete2->result("Categorie_model"));
+		return($requete2->result("Categorie_model"));
 
-}
+	}
 
-
-
-
-
-
+	
 
 }
