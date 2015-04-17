@@ -1,4 +1,4 @@
-<?php $this->load->view('globals/header'); ?>
+<?php //$this->load->view('globals/header'); ?>
 
         <div class="row">
 
@@ -98,4 +98,4 @@
     </div>
     <!-- /.container -->
 
-<?php $this->load->view('globals/footer'); ?>
+<?php //$this->load->view('globals/footer'); ?>

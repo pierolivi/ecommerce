@@ -58,6 +58,9 @@
                     <li>
                         <a href="#">Contact</a>
                     </li>
+                    <li>
+                        <a href="<?=base_url();?>index.php/Panier">Panier<?="(".count($panier = unserialize(get_cookie('cadie'))).")"?></a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

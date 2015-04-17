@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Main extends CI_Controller {
+//class Main extends CI_Controller {
+	class Main extends MY_Controller {
 	public function index()
 	{
 		//test
@@ -25,10 +26,15 @@ class Main extends CI_Controller {
 		
 
 
-		$this->load->view("accueil",	//je vais dans views/accueil.php
+		/*$this->load->view("accueil",	//je vais dans views/accueil.php
+			["cinqproduits"=>$produits,
+			"slide"=>$Slides
+			]);*/
+		$this->render("accueil",
 			["cinqproduits"=>$produits,
 			"slide"=>$Slides
 			]);
+
 
 	}
 }

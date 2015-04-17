@@ -3,11 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Panier extends CI_Controller
 {
-
+	
 	public function index()
 	{
 		$panier = unserialize(get_cookie('cadie'));
+		$this->load->helpers("monsuper");//fonction cree par nous:formatPrix(),modif de set_cookie
+
 		var_dump($panier);
+
+		$prodPanier = [];
 		if (!empty($panier)){
 
 		$this->load->model('Panier_model');
@@ -23,6 +27,7 @@ class Panier extends CI_Controller
 			["prod"=>$prodPanier,
 			"qte"=>$panier
 			]);
+		
 	}
 
 
@@ -57,6 +62,7 @@ class Panier extends CI_Controller
 		}
 		
 		set_cookie("cadie",serialize($panier),time()+172800);//2jours
+		//set_cookie("cadie",$panier); //notre fonction
 		//var_dump(unserialize(get_cookie("cadie")));
 
 		redirect("Panier");
@@ -66,6 +72,62 @@ class Panier extends CI_Controller
 
 
 	}
+
+	public function action($choix, $id)
+	{
+		//echo $choix;
+		//$this->load->model('Panier_model');
+		$panier = unserialize(get_cookie('cadie'));
+
+
+
+		if ($choix == "supprimer"){
+		//echo $id;
+					
+			if (isset($panier[$id]))
+			{
+			//echo "prod existe: ".$panier[$id];
+			unset($panier[$id]); //effacer une ligne id
+			
+			
+			//var_dump($panier);
+
+			$this->session->set_flashdata("success_comment",
+                		"Votre produit ".$id." a bien ete supprime");
+			
+				//redirect("panier");
+
+			}
+		}
+		if ($choix == "ajouter"){
+			//var_dump($panier);
+			$ajout=$panier[$id]+1;
+
+			$panier[$id]=intval($ajout);
+
+			
+			
+			
+		}
+
+		if ($choix == "enlever"){
+			//var_dump($panier);
+			$enlever=$panier[$id]-1;
+
+			$panier[$id]=intval($enlever);
+
+			
+			
+			
+		}
+
+		set_cookie("cadie",serialize($panier),time()+172800);
+		//set_cookie("cadie",$panier); //notre fonction
+
+		redirect("Panier");
+	}
+
+
 
 
 }
