@@ -15,6 +15,7 @@ class Panier extends CI_Controller
 		if (!empty($panier)){
 
 		$this->load->model('Panier_model');
+
 		
 		$prodPanier = $this->Panier_model
 		->ListProd(array_keys($panier)); //array_keys: recupere les cles de panier
@@ -23,6 +24,7 @@ class Panier extends CI_Controller
 		//$quantite=(array_values($panier));
 		//var_dump($quantite);
 		}
+		
 		$this->load->view("Panier/listpanier",
 			["prod"=>$prodPanier,
 			"qte"=>$panier

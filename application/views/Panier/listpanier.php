@@ -3,7 +3,7 @@
 <div class="container">
              
     <div class="row">
-        <div class="col-md-6">
+       <div class="col-md-6">
                 <?php $this->load->view('globals/sidebar'); ?>
         </div>    
            <!--<?php var_dump($prod);?>-->
