@@ -22,7 +22,7 @@
     <script src="<?=base_url();?>/assets/js/bootstrap.min.js"></script>
     <script>
     var token_csrf="<?=$this->security->get_csrf_hash();?>";
-    console.log(token_csrf);
+    //console.log(token_csrf);
 
     </script>
     <script src="<?=base_url();?>assets/js/chat.js"></script>

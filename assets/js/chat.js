@@ -15,12 +15,12 @@ $(document).ready(function()
 			
 		}).done(function(resulat)
 		{
-			console.log(resulat);
+			//console.log(resulat);
 			token_csrf=resultat.csrf;
 		});
 
 	});
-
+	setInterval(function(){
 	$.ajax({
 			type:"GET",
 			dataType:"json"
@@ -30,4 +30,5 @@ $(document).ready(function()
 	{
 		$('#chatMessages').empty().append(resultat.messages);
 	});
+	},2000);
 });
